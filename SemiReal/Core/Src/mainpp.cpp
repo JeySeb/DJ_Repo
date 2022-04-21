@@ -8,10 +8,16 @@
 #include <mainpp.h>
 #include <ros.h>
 #include <std_msgs/String.h>
+#include <geometry_msgs/Twist.h>
 
 #include "BMP180.h"
 #include "stdio.h"
 
+
+
+float movx=0;
+float movy=0;
+float movz=0;
 
 
 ros::NodeHandle nh;
@@ -22,6 +28,16 @@ ros::Publisher press_pub("pressure", &str_msg);
 ros::Publisher alt_pub("altitude", &str_msg);
 
 char hello[] = "Hello world!";
+
+void cmd_vel_cb( const geometry_msgs::Twist& twist){
+	movx = twist.linear.x;
+	movy = twist.linear.z;
+	movz = twist.linear.y;
+
+}
+
+ros::Subscriber<geometry_msgs::Twist> sub_mov("cmd_vel", cmd_vel_cb );
+
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
   nh.getHardware()->flush();
@@ -50,6 +66,7 @@ void setup(void)
   nh.advertise(temp_pub);
   nh.advertise(press_pub);
   nh.advertise(alt_pub);
+  nh.subscribe(sub_mov);
 
   BMP180_Start();
 }
