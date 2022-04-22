@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from re import A
 import rospy
 
 from pynput import keyboard as kb
