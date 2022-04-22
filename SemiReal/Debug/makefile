@@ -75,8 +75,8 @@ all: main-build
 main-build: SemiReal.elf secondary-outputs
 
 # Tool invocations
-SemiReal.elf SemiReal.map: $(OBJS) $(USER_OBJS) /home/jeyseb/STM32CubeIDE/workspace_1.9.0/SemiReal/STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "SemiReal.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jeyseb/STM32CubeIDE/workspace_1.9.0/SemiReal/STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SemiReal.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+SemiReal.elf SemiReal.map: $(OBJS) $(USER_OBJS) /home/jeyseb/Desktop/DJ_Repo/SemiReal/STM32L476RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "SemiReal.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/jeyseb/Desktop/DJ_Repo/SemiReal/STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SemiReal.map" -Wl,--gc-sections -static -u _printf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
