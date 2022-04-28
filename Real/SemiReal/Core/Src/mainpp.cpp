@@ -24,8 +24,8 @@ float velz=0;
 float vely=0;
 
 int zero = 75;
-int velrigth = 90;
-int velleft = 68;
+int velrigth = 85;
+int velleft = 65;
 
 /* VARIABLES-----------------*/
 
@@ -182,7 +182,7 @@ void setup(TIM_HandleTypeDef phtim1, TIM_HandleTypeDef phtim2)
 {
 	hhtim1 = phtim1;
 	hhtim2 = phtim2;
-	start(hhtim1,hhtim2);
+	//start(hhtim1,hhtim2);
 	tur_init(hhtim1,hhtim2,zero);
 
 	nh.initNode();
